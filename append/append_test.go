@@ -46,3 +46,11 @@ func BenchmarkAllocated(b *testing.B) {
 		people = append(people, New())
 	}
 }
+
+func BenchmarkFor(b *testing.B) {
+	b.ResetTimer()
+	people := make([]*Person, b.N, b.N)
+	for i := 0; i < b.N; i++ {
+		people[i] = New()
+	}
+}
